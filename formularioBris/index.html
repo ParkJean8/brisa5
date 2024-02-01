@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <title>Formulario de Países, Estados, Localidades y Municipios</title>
+
+</head>
+<body>
+    <!--Inicia un formulario que contendrá los menús desplegables y el botón-->
+    <form>
+    <!--Etiqueta para el menú desplegable del país-->
+        <label for="country">País:</label>
+        <select id="country" onchange="updateStates()">
+            <option value="">Selecciona un país</option>
+        </select>
+
+        <br>
+       <!--Opción inicial del menú desplegable-->
+        <label for="state">Estado:</label>
+        <select id="state" onchange="updateCities()">
+            <option value="">Selecciona un estado</option>
+        </select>
+
+        <br>
+ <!--Se repite un patrón similar para los menús desplegables de estado, localidad y municipio-->
+        <label for="city">Localidad:</label>
+        <select id="city" onchange="updateMunicipalities()">
+            <option value="">Selecciona una localidad</option>
+        </select>
+
+        <br>
+
+        <label for="municipality">Municipio:</label>
+        <select id="municipality">
+            <option value="">Selecciona un municipio</option>
+        </select>
+
+        <br>
+     <!--Botón que, cuando se hace clic, llama a la función-->
+        <button type="button" onclick="showSelection()">Mostrar Selección</button>
+    </form>
+    
+    <script src="./js/scrip.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('js/sw.js')
+          .then(registration => {
+            console.log('Service Worker registrado:', registration);
+          })
+          .catch(error => {
+            console.log('Error al registrar el Service Worker:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
